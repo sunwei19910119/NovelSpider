@@ -19,4 +19,5 @@ class MyFilePipeline(FilesPipeline):
     def file_path(self, request, response=None, info=None):
         path = urlparse(request.url).path
 
+        # return join(basename(dirname(path)),basename(path))
         return basename(path)
