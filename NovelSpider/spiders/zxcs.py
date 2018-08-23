@@ -51,7 +51,8 @@ class ZxcsSpider(scrapy.Spider):
     def download(self,response):
         # 实例化
         item_loader = ItemLoader(item=ZxcsItem(), response=response)
-        item_loader.add_xpath('file_urls','//span[@class="downfile"][1]/a/@href')
+        item_loader.add_xpath('file_urls','//div[@class="content"]/div[@class="panel"][1]//span[@class="downfile"][1]/a/@href')
+        # item_loader.add_xpath('file_urls','//span[@class="downfile"][1]/a/@href')
         zxcs_item = item_loader.load_item()
 
         # 已经填充好了值调用yield传输至pipeline
